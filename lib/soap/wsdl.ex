@@ -29,7 +29,8 @@ defmodule Soap.Wsdl do
     wsdl = SweetXml.parse(wsdl)
 
     protocol_namespace = get_protocol_namespace(wsdl)
-    soap_namespace = get_soap_namespace(wsdl, opts)
+    # soap_namespace = get_soap_namespace(wsdl, opts)
+    soap_namespace = 'soap' # This is a bugfix for older formatted wsdl files
     schema_namespace = get_schema_namespace(wsdl)
     endpoint = Keyword.get(opts, :endpoint, get_endpoint(wsdl, protocol_namespace, soap_namespace))
 
